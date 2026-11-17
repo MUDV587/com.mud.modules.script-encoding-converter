@@ -2,7 +2,7 @@
   "name": "com.mud.modules.script-encoding-converter",
   "version": "0.1.0",
   "displayName": "Script Encoding Converter",
-  "description": "Editor extension for converting script encoding between GB2312 and UTF8. 将脚本编码从 GB2312 转换为 UTF8 的编辑器扩展。Derived from the upstream project MUDV587/Script-Encoding-Converter (original author Bian Shanghai) with additional fixes and improvements. 本包基于上游项目 MUDV587/Script-Encoding-Converter（原作者 Bian Shanghai）优化改进。",
+  "description": "Editor extension for converting GB2312-encoded Unity scripts to UTF8. 将 Unity 脚本编码从 GB2312 转为 UTF8 的编辑器扩展。Improved derivative of Bian-Sh/Script-Encoding-Converter (MIT, Bian Shanghai). 本包基于 Bian-Sh/Script-Encoding-Converter 优化改进。",
   "unity": "2019.4",
   "keywords": [
     "encoding",
