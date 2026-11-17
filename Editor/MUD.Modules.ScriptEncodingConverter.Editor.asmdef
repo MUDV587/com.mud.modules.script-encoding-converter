@@ -1,0 +1,16 @@
+{
+    "name": "MUD.Modules.ScriptEncodingConverter.Editor",
+    "rootNamespace": "MUD.Modules.ScriptEncodingConverter",
+    "references": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

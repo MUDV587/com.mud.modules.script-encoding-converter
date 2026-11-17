@@ -1,0 +1,32 @@
+{
+  "name": "com.mud.modules.script-encoding-converter",
+  "version": "0.1.0",
+  "displayName": "Script Encoding Converter",
+  "description": "Editor extension for converting script encoding between GB2312 and UTF8. 将脚本编码从 GB2312 转换为 UTF8 的编辑器扩展。Derived from the upstream project MUDV587/Script-Encoding-Converter (original author Bian Shanghai) with additional fixes and improvements. 本包基于上游项目 MUDV587/Script-Encoding-Converter（原作者 Bian Shanghai）优化改进。",
+  "unity": "2019.4",
+  "keywords": [
+    "encoding",
+    "gb2312",
+    "utf-8",
+    "editor",
+    "chinese",
+    "mud"
+  ],
+  "author": {
+    "name": "MUD"
+  },
+  "license": "MIT",
+  "samples": [
+    {
+      "displayName": "Encoding Test Scripts / 编码测试脚本",
+      "description": "Demo scripts in UTF8, UTF8 BOM and GB2312 encodings. Import to test the converter. UTF8 / UTF8 BOM / GB2312 编码的演示脚本，可导入后体验转码功能。",
+      "path": "Samples~/EncodingTest"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MUDV587/com.mud.modules.script-encoding-converter.git"
+  },
+  "documentationUrl": "https://github.com/MUDV587/com.mud.modules.script-encoding-converter#readme",
+  "changelogUrl": "https://github.com/MUDV587/com.mud.modules.script-encoding-converter/blob/main/CHANGELOG.md"
+}

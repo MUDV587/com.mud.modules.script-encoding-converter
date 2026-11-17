@@ -1,0 +1,5 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Keep GB2312 sample scripts byte-identical (no line-ending conversion)
+Samples~/** -text

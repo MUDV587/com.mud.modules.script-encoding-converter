@@ -1,0 +1,88 @@
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check required package files
+        run: |
+          for f in package.json README.md CHANGELOG.md LICENSE; do
+            [ -f "$f" ] || { echo "::error file=$f::missing $f"; exit 1; }
+          done
+
+      - name: Validate JSON files
+        run: |
+          node -e "const fs=require('fs'); for (const f of ['package.json','Editor/MUD.Modules.ScriptEncodingConverter.Editor.asmdef','Tests/Editor/MUD.Modules.ScriptEncodingConverter.Tests.Editor.asmdef']) { JSON.parse(fs.readFileSync(f,'utf8')); console.log('ok', f); }"
+
+      - name: Validate package.json fields
+        run: |
+          node -e "
+            const p = JSON.parse(require('fs').readFileSync('package.json', 'utf8'));
+            const required = ['name', 'version', 'displayName', 'description', 'unity', 'license', 'author'];
+            for (const k of required) if (!p[k]) throw new Error('missing field: ' + k);
+            if (!/^\d+\.\d+\.\d+$/.test(p.version)) throw new Error('invalid semver: ' + p.version);
+            if (p.name !== 'com.mud.modules.script-encoding-converter') throw new Error('unexpected name: ' + p.name);
+            console.log('package.json ok:', p.name, p.version);
+          "
+
+      - name: Check package files have .meta (excluding Samples~ and *.meta)
+        run: |
+          missing=0
+          while IFS= read -r -d '' f; do
+            case "$f" in
+              ./.*/.*|./.*|*.meta) continue;; # dot-folders/files (.github, .gitignore, …) need no .meta in Unity
+            esac
+            if [ ! -f "$f.meta" ]; then
+              echo "::error file=$f.meta::missing meta file for $f"
+              missing=1
+            fi
+          done < <(find . -type f -not -path './Samples~/*' -print0)
+          exit $missing
+
+      - name: Check the GB2312 demo sample was not re-encoded
+        # The .gitattributes "Samples~/** -text" rule keeps NewBehaviourScript2.cs byte-identical (GB2312).
+        # If git ever normalizes it to UTF-8 this check fails instead of silently breaking the demo.
+        run: |
+          node -e "
+            const b = require('fs').readFileSync('Samples~/EncodingTest/NewBehaviourScript2.cs');
+            try {
+              new TextDecoder('utf-8', { fatal: true }).decode(b);
+              console.log('::error::NewBehaviourScript2.cs is valid UTF-8 — the GB2312 sample was re-encoded; check .gitattributes');
+              process.exit(1);
+            } catch {
+              console.log('GB2312 sample is not valid UTF-8 (as expected)');
+            }
+          "
+
+      - name: Check package text files are valid UTF-8
+        run: |
+          node -e "
+            const fs = require('fs'), path = require('path');
+            const decoder = new TextDecoder('utf-8', { fatal: true });
+            const exts = new Set(['.cs','.shader','.cginc','.hlsl','.compute','.asmdef','.uxml','.uss','.md','.txt','.json','.yml','.yaml','.meta']);
+            let bad = 0;
+            (function walk(dir) {
+              for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+                const p = path.join(dir, e.name);
+                if (e.isDirectory()) { if (e.name.endsWith('~') || e.name.startsWith('.')) continue; walk(p); continue; }
+                if (!exts.has(path.extname(e.name).toLowerCase())) continue;
+                try { decoder.decode(fs.readFileSync(p)); }
+                catch { console.log('::error file=' + p + '::not valid UTF-8'); bad++; }
+              }
+            })('.');
+            if (bad) process.exit(1);
+            console.log('all package text files are valid UTF-8');
+          "
+
+      - name: Check CHANGELOG mentions current version
+        run: |
+          version=$(node -e "console.log(JSON.parse(require('fs').readFileSync('package.json','utf8')).version)")
+          grep -qF "[$version]" CHANGELOG.md || { echo "::error::CHANGELOG.md has no section for [$version]"; exit 1; }
