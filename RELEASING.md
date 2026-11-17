@@ -22,25 +22,12 @@
 
 注意：方式二需要 `main` 分支允许 GitHub Actions 推送（没有分支保护，或 bot 在允许名单内）。若仓库开了分支保护，请用方式一。
 
-## 发布前准备 / Before the first release
-
-远端仓库地址尚未配置。发布前请：
-
-1. 在 GitHub 创建空仓库（例如 `MUD/com.mud.modules.script-encoding-converter`）；
-2. 在 `package.json` 填回 `repository` / `documentationUrl` / `changelogUrl`（参考 README 安装章节）；
-3. 提交并推送：
-   ```
-   git remote add origin https://github.com/<owner>/com.mud.modules.script-encoding-converter.git
-   git push -u origin main
-   ```
-4. 之后每次发版重复方式一/方式二即可。
-
 ## Release 之后
 
 用户在项目 `manifest.json` 中这样安装带版本号的包（包内容即为仓库根，无需 `?path=`）：
 
 ```json
-"com.mud.modules.script-encoding-converter": "https://github.com/<owner>/com.mud.modules.script-encoding-converter.git#v0.1.0"
+"com.mud.modules.script-encoding-converter": "https://github.com/MUDV587/com.mud.modules.script-encoding-converter.git#v0.1.0"
 ```
 
 ## validate 工作流

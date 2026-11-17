@@ -4,7 +4,7 @@ All notable changes to this package are documented in this file.
 
 ## [0.1.0] - 2026-11-17 — MUD 首发版 / MUD first release
 
-本包是 [MUDV587/Script-Encoding-Converter](https://github.com/MUDV587/Script-Encoding-Converter)（原作者 **Bian Shanghai / Bian-Sh**，MIT）的派生版本，版本号沿用上游 `0.1.0`。相比上游 v0.1.0，本版的变化（in English below）：
+本包是 [Bian-Sh/Script-Encoding-Converter](https://github.com/Bian-Sh/Script-Encoding-Converter)（原作者 **Bian Shanghai / Bian-Sh**，MIT）的派生版本，版本号沿用上游 `0.1.0`。相比上游 v0.1.0，本版的变化（in English below）：
 
 ### Added
 - Editor tests: UTF-16LE / UTF-16-BOM files are never mistaken for GB2312 (regression for the NUL-byte guard), `ProbeFileEncoding` classification, `NormalizeExtensionList` normalization/dedup/fallback, `GetMirrorPath` mirroring + path-escape guard, backup-failure leaves the original file untouched.

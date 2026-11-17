@@ -2,9 +2,9 @@
 
 > **出处与致谢 / Attribution**
 >
-> 本包是 [MUDV587/Script-Encoding-Converter](https://github.com/MUDV587/Script-Encoding-Converter)（原作者 **Bian Shanghai / Bian-Sh**，MIT 协议）的**优化改进版**，由 **MUD** 维护。上游的版权声明保留于 [LICENSE](LICENSE)；本包的全部改动见下方「优化改进 / Improvements」与 [CHANGELOG.md](CHANGELOG.md)。
+> 本包是 [Bian-Sh/Script-Encoding-Converter](https://github.com/Bian-Sh/Script-Encoding-Converter)（原作者 **Bian Shanghai / Bian-Sh**，MIT 协议）的**优化改进版**，由 **MUD** 维护。上游的版权声明保留于 [LICENSE](LICENSE)；本包的全部改动见下方「优化改进 / Improvements」与 [CHANGELOG.md](CHANGELOG.md)。
 >
-> This package is an **improved and optimized derivative** of [MUDV587/Script-Encoding-Converter](https://github.com/MUDV587/Script-Encoding-Converter) by **Bian Shanghai / Bian-Sh** (MIT). MUD maintains this distribution. The upstream copyright is retained in [LICENSE](LICENSE); all changes are listed below and in [CHANGELOG.md](CHANGELOG.md).
+> This package is an **improved and optimized derivative** of [Bian-Sh/Script-Encoding-Converter](https://github.com/Bian-Sh/Script-Encoding-Converter) by **Bian Shanghai / Bian-Sh** (MIT). MUD maintains this distribution. The upstream copyright is retained in [LICENSE](LICENSE); all changes are listed below and in [CHANGELOG.md](CHANGELOG.md).
 
 > Important: Don't Use it before backup your scripts (usually backup by git)
 >
@@ -24,25 +24,25 @@
 "com.mud.modules.script-encoding-converter": "file:../com.mud.modules.script-encoding-converter"
 ```
 
-**Unity Package Manager (git URL，发布到 GitHub 后)**
+**Unity Package Manager (git URL)**
 
 包内容即为仓库根，无需 `?path=` 参数：
 
 ```json
-"com.mud.modules.script-encoding-converter": "https://github.com/<owner>/com.mud.modules.script-encoding-converter.git"
+"com.mud.modules.script-encoding-converter": "https://github.com/MUDV587/com.mud.modules.script-encoding-converter.git"
 ```
 
 可选：锁定到某个 tag（例如 `v0.1.0`）：
 
 ```json
-"com.mud.modules.script-encoding-converter": "https://github.com/<owner>/com.mud.modules.script-encoding-converter.git#v0.1.0"
+"com.mud.modules.script-encoding-converter": "https://github.com/MUDV587/com.mud.modules.script-encoding-converter.git#v0.1.0"
 ```
 
 需要 Unity 2019.4 或更高版本。 Requires Unity 2019.4 or newer.
 
 也可以在 Package Manager 窗口选择 *Add package from git URL...* 粘贴地址安装。
 
-# 优化改进 / Improvements（相对上游 MUDV587/Script-Encoding-Converter）
+# 优化改进 / Improvements（相对上游 Bian-Sh/Script-Encoding-Converter）
 
 - **[修复] UTF-16/UTF-32/二进制文件不再被误判为 GB2312 并重写成乱码**：检测到 `0x00` 字节即判为「无法识别」，所有入口（手动转换 / Auto Fix / Preview）一律跳过并报警。上游中 BOM 以外的 UTF-16LE 中文脚本会严格解码为 GB2312，从而被"成功转换"为乱码。
 - **[修复] 备份会话目录加毫秒 + 冲突去重**：上游按秒命名，同一秒内的两次批量转换会互相覆盖备份。
