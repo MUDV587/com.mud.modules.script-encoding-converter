@@ -49,6 +49,6 @@
 
 - 包必需文件（`package.json` / `README.md` / `CHANGELOG.md` / `LICENSE`）存在
 - 所有 JSON / asmdef 可解析，`package.json` 必填字段与语义化版本号正确
-- 包内（`Samples~`、点目录/点文件、`*.meta` 自身除外）所有文件都有对应的 `.meta`，以及 GB2312 演示样本未被 git 重编码的完整性校验
+- 包内（Unity 忽略的 `~` 目录、点目录/点文件、`*.meta` 自身除外）所有文件都有对应的 `.meta`，以及 GB2312 演示样本未被 git 重编码的完整性校验
 - 包内文本文件均为合法 UTF-8
 - `CHANGELOG.md` 包含当前版本的小节
