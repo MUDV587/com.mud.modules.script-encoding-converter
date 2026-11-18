@@ -49,13 +49,13 @@ The pre-UPM versions shipped as "copy `Assets/ScriptEncodingConverter/` into you
 
 Behavioural notes since 0.1.0:
 
-- **Auto Fix is per project** (no more EditorPrefs/assets-menu toggle): `Project Settings → Script Encoding Converter`, default **off**; commit `ProjectSettings/ScriptEncodingConverter.asset` to share with your team.
+- **Auto Fix is per project** (no more EditorPrefs/assets-menu toggle): `Project Settings → MUD → Script Encoding Converter`, default **off**; commit `ProjectSettings/ScriptEncodingConverter.asset` to share with your team.
 - **Backup is on by default**; empty Backup directory means `<temp>/ScriptEncodingConverterBackups/<project name>/<timestamp>`.
 - Batch conversions re-import once at the end (`AssetDatabase.Refresh()`).
 
 ## Configuration
 
-`Project Settings > Script Encoding Converter` (asset stored at `ProjectSettings/ScriptEncodingConverter.asset`, commit it to git):
+`Project Settings > MUD > Script Encoding Converter` (asset stored at `ProjectSettings/ScriptEncodingConverter.asset`, commit it to git):
 
 | Setting | Default | Description |
 |---|---|---|

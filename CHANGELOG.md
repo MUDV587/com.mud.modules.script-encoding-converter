@@ -4,6 +4,12 @@
 
 All notable changes to this package are documented in this file.
 
+## [Unreleased]
+
+### Changed
+- Project Settings 页面归入 MUD 分组：`Project Settings > MUD > Script Encoding Converter`（原路径 `Project/Script Encoding Converter`）；设置资产仍存于 `ProjectSettings/ScriptEncodingConverter.asset`，无需迁移。
+- The Project Settings page is now grouped under MUD: `Project Settings > MUD > Script Encoding Converter`; the settings asset stays at `ProjectSettings/ScriptEncodingConverter.asset`, no migration needed.
+
 ## [0.1.0] - 2026-11-17 — MUD 首发版 / MUD first release
 
 本包是 [Bian-Sh/Script-Encoding-Converter](https://github.com/Bian-Sh/Script-Encoding-Converter)（原作者 **Bian Shanghai / Bian-Sh**，MIT）的派生版本，版本号沿用上游 `0.1.0`。相比上游 v0.1.0，本版的变化（in English below）：

@@ -132,7 +132,7 @@ namespace MUD.Modules.ScriptEncodingConverter
         [SettingsProvider]
         public static SettingsProvider CreateSettingsProvider()
         {
-            return new SettingsProvider("Project/Script Encoding Converter", SettingsScope.Project)
+            return new SettingsProvider("Project/MUD/Script Encoding Converter", SettingsScope.Project)
             {
                 label = "Script Encoding Converter",
                 guiHandler = DrawGui,

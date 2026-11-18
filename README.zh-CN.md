@@ -49,13 +49,13 @@ https://github.com/MUDV587/com.mud.modules.script-encoding-converter.git
 
 0.1.0 起的行为变化：
 
-- **Auto Fix 改为按项目配置**（不再有 EditorPrefs / 菜单开关）：`Project Settings → Script Encoding Converter`，默认**关闭**；建议把 `ProjectSettings/ScriptEncodingConverter.asset` 提交到 git。
+- **Auto Fix 改为按项目配置**（不再有 EditorPrefs / 菜单开关）：`Project Settings → MUD → Script Encoding Converter`，默认**关闭**；建议把 `ProjectSettings/ScriptEncodingConverter.asset` 提交到 git。
 - **Backup 默认开启**；备份目录留空 = `<temp>/ScriptEncodingConverterBackups/<项目名>/<时间戳>/`。
 - 批量转换完成后**一次性 `AssetDatabase.Refresh()`**。
 
 ## 配置
 
-`Project Settings > Script Encoding Converter`（资产存于 `ProjectSettings/ScriptEncodingConverter.asset`，建议提交到 git）：
+`Project Settings > MUD > Script Encoding Converter`（资产存于 `ProjectSettings/ScriptEncodingConverter.asset`，建议提交到 git）：
 
 | 设置 | 默认值 | 说明 |
 |---|---|---|
